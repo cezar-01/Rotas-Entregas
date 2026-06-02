@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdbool.h>
+#include <stdbool.h>   // Permite usar o tipo bool (true/false)
 
 // ======================= CONSTANTES =======================
 #define MAX_LOCAIS 50      // Numero maximo de locais (vertices) suportados
@@ -24,19 +24,19 @@ typedef struct {
 // ======================= PROTOTIPOS DAS FUNCOES =======================
 
 // --- Configuracao da rede ---
-void inicializar_rede(Rede* r);
-void definir_locais(Rede* r, int quantidade);
-bool definir_nome_local(Rede* r, int indice, const char* nome);
-bool adicionar_aresta(Rede* r, int origem, int destino, int peso, bool mao_dupla);
-void carregar_rede_exemplo(Rede* r);
+void inicializar_rede(Rede* r);                                  // Zera a rede (sem locais e sem estradas)
+void definir_locais(Rede* r, int quantidade);                    // Cria a quantidade de locais com nomes padrao
+bool definir_nome_local(Rede* r, int indice, const char* nome);  // Altera o nome de um local especifico
+bool adicionar_aresta(Rede* r, int origem, int destino, int peso, bool mao_dupla); // Cria uma estrada com peso
+void carregar_rede_exemplo(Rede* r);                             // Carrega uma rede pronta para demonstracao
 
 // --- Visualizacao ---
-void exibir_matriz(Rede* r);
-void listar_locais(Rede* r);
-bool indice_valido(Rede* r, int indice);
+void exibir_matriz(Rede* r);                     // Mostra a matriz de adjacencia da rede
+void listar_locais(Rede* r);                     // Lista os locais com seus indices
+bool indice_valido(Rede* r, int indice);         // Verifica se um indice de local existe na rede
 
 // --- Algoritmos de rotas ---
-void bfs(Rede* r, int inicio);
-void dijkstra(Rede* r, int origem, int destino);
+void bfs(Rede* r, int inicio);                   // Busca em largura: locais alcancaveis a partir de um ponto
+void dijkstra(Rede* r, int origem, int destino); // Menor rota da origem ate os demais locais (e ate um destino)
 
 #endif
